@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>給食情報</title>
+</head>
+<body>
+  <div id="mealInfo"></div>
+
+  <script>
+    function displayMealInfo() {
+      const mealSection = document.querySelector('.row.border-left.border-right.border-bottom.border-top');
+      const titleElement = mealSection.querySelector('div:nth-child(2) > div');
+      const date = titleElement.textContent.trim();
+
+      const mealElements = mealSection.querySelectorAll('div:nth-child(4) > div > p');
+      let mealInfo = '<strong>' + date + '</strong><br>';
+      mealElements.forEach(meal => {
+        mealInfo += meal.textContent + '<br>';
+      });
+
+      const mealInfoDiv = document.getElementById('mealInfo');
+      mealInfoDiv.innerHTML = mealInfo;
+    }
+
+    window.onload = function () {
+      displayMealInfo();
+    };
+  </script>
+</body>
+</html>
